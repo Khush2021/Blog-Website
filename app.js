@@ -4,12 +4,14 @@ const app = express();
 const port = 3000;
 const https = require("https");
 const _ = require("lodash"); //used to lowercase complete string and ignore special symbols
+require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 
 mongoose.set("strictQuery", false);
-mongoose.connect("mongodb://localhost:27017/blogDB", { useNewUrlParser: true });
+connectionString = process.env.CONNECTIONSTRING;
+mongoose.connect(connectionString, { useNewUrlParser: true });
 
 const homeStartingContent =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas cursus elit tempor, ultricies nunc quis, eleifend odio. Suspendisse a diam aliquam ipsum cursus lacinia. Donec ullamcorper enim iaculis, consequat felis quis, aliquet elit. Pellentesque congue enim ut dictum ornare. Cras sit amet turpis sit amet nunc consectetur ultrices. Proin egestas felis ut lectus sollicitudin imperdiet. Nam eleifend semper leo nec euismod. Phasellus tincidunt mi vel aliquet aliquet. Nunc ornare eros pulvinar, condimentum odio quis, molestie diam. Maecenas ac odio id neque interdum consectetur sed eu magna. Fusce ipsum purus, faucibus a tristique ut, malesuada sit amet urna.";
