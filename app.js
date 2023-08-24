@@ -54,9 +54,9 @@ app.get("/compose", function (req, res) {
   res.render("compose", {});
 });
 
-app.post("/home", function(req, res){
-  res.redirect("/compose")
-})
+app.post("/home", function (req, res) {
+  res.redirect("/compose");
+});
 
 app.post("/compose", function (req, res) {
   const post = new Blog({
